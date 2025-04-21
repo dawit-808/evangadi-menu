@@ -13,35 +13,37 @@ class App extends Component {
     else return "all";
   };
 
+  getFilteredItems = () => {
+    const category = this.getTimeBasedCategory();
+    return category === "all"
+      ? menu
+      : menu.filter((item) => item.category === category);
+  };
+
   render() {
     const category = this.getTimeBasedCategory();
-    const filteredItems =
-      category === "all"
-        ? menu
-        : menu.filter((item) => item.category === category);
+    const filteredItems = this.getFilteredItems();
 
     return (
-      <>
-        <div className="all-container">
-          <Header />
-          <h2 className="category-title">
-            {category === "all"
-              ? "ALL MENU"
-              : `NOW SERVING: ${category.toUpperCase()}`}
-          </h2>
-          <div className="foods-container">
-            {filteredItems.map(({ id, title, price, img, desc }) => (
-              <FoodItem
-                key={id}
-                img={img}
-                title={title}
-                price={price}
-                desc={desc}
-              />
-            ))}
-          </div>
+      <div className="all-container">
+        <Header />
+        <h2 className="category-title">
+          {category === "all"
+            ? "ALL MENU"
+            : `NOW SERVING: ${category.toUpperCase()}`}
+        </h2>
+        <div className="foods-container">
+          {filteredItems.map(({ id, title, price, img, desc }) => (
+            <FoodItem
+              key={id}
+              img={img}
+              title={title}
+              price={price}
+              desc={desc}
+            />
+          ))}
         </div>
-      </>
+      </div>
     );
   }
 }
