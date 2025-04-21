@@ -27,11 +27,13 @@ class App extends Component {
     return (
       <div className="all-container">
         <Header />
-        <h2 className="category-title">
-          {category === "all"
-            ? "ALL MENU"
-            : `NOW SERVING: ${category.toUpperCase()}`}
-        </h2>
+        <center>
+          <h2 className="category-title">
+            {category === "all"
+              ? "ALL MENU"
+              : `NOW SERVING: ${category.toUpperCase()}`}
+          </h2>
+        </center>
         <div className="foods-container">
           {filteredItems.map(({ id, title, price, img, desc }) => (
             <FoodItem
