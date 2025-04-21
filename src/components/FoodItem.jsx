@@ -2,19 +2,18 @@ import React, { Component } from "react";
 
 class FoodItem extends Component {
   render() {
+    const { img, title, price, desc } = this.props;
     return (
       <div>
-        <div className="foods-container">
-          <div className="single-food">
-            <div className="img">
-              <img src={this.props.img} />
-            </div>
-            <div className="title-price">
-              <h3>{this.props.title}</h3>
-              <p>{this.props.price}</p>
-            </div>
-            <div className="food-desc">{this.props.desc}</div>
+        <div className="single-food">
+          <div className="img">
+            <img src={img} />
           </div>
+          <div className="title-price">
+            <h3>{title}</h3>
+            <p>{price}</p>
+          </div>
+          <div className="food-desc">{desc}</div>
         </div>
       </div>
     );
